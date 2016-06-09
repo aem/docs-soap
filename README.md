@@ -1,24 +1,23 @@
 # docs-soap
-docs-soap is a small, simple library that can be used to clean clipboard contents from Google Docs born from
-the need to parse clipboard content from Google Docs into a [DraftJS](https://www.github.com/facebook/draft-js) Rich Text Editor in a
-valid HTML structure. 
+docs-soap is a small, simple library that can be used to transform clipboard contents from Google Docs into readable HTML. This library was born from the need to parse clipboard content from Google Docs into a [DraftJS](https://www.github.com/facebook/draft-js) Rich Text Editor and thus certain W3C HTML requirements aren't necessarily maintained. For example, while W3C requires unordered lists to be surrounded by `<ul>` tags, most HTML conversion engines will handle the unwrapped list items, so that standard is ignored. 
 
-Both Google mutates clipboard contents severely. Google stores bold and italic text as follows:
-```html
-<b>
-  <p style="font-weight:700">this is some bold text</p>
-  <p style="font-style:italic">this is some italic text</p>
-</b>
-```
-And this is just the basics. This (albeit currently basic) library will aim to ease those pains and provide users an easy way to parse
-this clipboard content to valid HTML.
+This project was developed for use in a client-side project. To use in a Node environment, your project will also require [jsdom](https://www.npmjs.com/package/jsdom). 
 
-This project was developed for use in a client-side project. To use in a node environment, take a look at [jsdom](https://www.npmjs.com/package/jsdom)
-
-### API
+### Exported API
 ```js
 export {
-  convertGoogleToHTML(html: string) -> string,
+  docsSoap(html: string) -> string,
   parseHTML(html: string) -> HTMLElement
 }
+```
+
+### Testing
+Tests are written in Mocha, using `expect` for assertions. `npm run test` will run all tests in the `test/` directory, allowing you to test the entire library's functionality at once. All contributions to the repository are expected to contain accompanying tests.
+
+### Usage
+```js
+import { docsSoap } from 'docs-soap';
+const html = '<body><b><span style="font-weight:700">bold text</span><span style="font-style:italic">some italic text</span></b></body>';
+const clean = docsSoap(html);
+console.log(clean); /* "<body><strong>some bold text</strong><i>some italic text</i></body>" */
 ```
