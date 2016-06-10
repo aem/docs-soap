@@ -15,6 +15,9 @@ export {
 Tests are written in Mocha, using `expect` for assertions. `npm run test` will run all tests in the `test/` directory, allowing you to test the entire library's functionality at once. All contributions to the repository are expected to contain accompanying tests.
 
 ### Usage
+```bash
+npm install --save docs-soap
+```
 ```js
 import { docsSoap } from 'docs-soap';
 const html = '<body><b><span style="font-weight:700">bold text</span><span style="font-style:italic">some italic text</span></b></body>';
