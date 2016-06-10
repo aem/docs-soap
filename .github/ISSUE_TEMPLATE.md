@@ -1,18 +1,19 @@
-### Provide a detailed description of the issue
+**Provide a detailed description of the issue**
 
 
-### Steps to reproduce
-1.
-2.
-3.
+**Steps to reproduce**
 
-### Expected behavior
+1. 
+2. 
+3. 
 
-
-### Actual behavior
+**Expected behavior**
 
 
-### Code example or screenshot if applicable
+**Actual behavior**
+
+
+**Code example or screenshot if applicable**
 
 
 @aem
