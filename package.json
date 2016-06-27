@@ -24,9 +24,6 @@
     "test": "mocha --compilers js:babel-register test",
     "lint": "eslint --ext '.js' ./src"
   },
-  "dependencies": {
-    "invariant": "^2.2.1"
-  },
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-core": "^6.7.7",

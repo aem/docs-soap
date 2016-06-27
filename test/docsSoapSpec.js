@@ -1,7 +1,7 @@
 'use es6';
 
 import documents from './fixtures/documents';
-import { docsSoap } from '../src/index';
+import docsSoap from '../src/index';
 import expect from 'expect';
 import jsdom from 'mocha-jsdom';
 import parseHTML from '../src/parseHTML';

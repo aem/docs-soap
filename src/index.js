@@ -1,7 +1,9 @@
-import docsSoap from './docsSoap';
-import parseHTML from './parseHTML';
+const docsSoap = require('./docsSoap');
+const parseHTML = require('./parseHTML');
 
-module.exports = {
+export default docsSoap;
+
+export {
   docsSoap,
   parseHTML
 };

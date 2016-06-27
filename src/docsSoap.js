@@ -1,5 +1,4 @@
-import invariant from 'invariant';
-import parseHTML from './parseHTML';
+const parseHTML = require('./parseHTML');
 
 const DOCS_BOLD_WEIGHT = '700';
 const ITALIC_STYLE = 'italic';
@@ -123,11 +122,12 @@ const getCleanDocument = (dirty) => {
   return body;
 };
 
-export default (clipboardContent) => {
-  invariant(
-    typeof clipboardContent === 'string',
-    `Expected 'clipboardContent' to be a string of HTML, received ${typeof clipboardContent}`
-  );
-  invariant(clipboardContent.length > 0, 'Expected clipboardContent to have content, received empty string');
+module.exports = (clipboardContent) => {
+  if (typeof clipboardContent !== 'string') {
+    throw new Error(`Expected 'clipboardContent' to be a string of HTML, received ${typeof clipboardContent}`);
+  }
+  if (clipboardContent.length <= 0) {
+    throw new Error('Expected clipboardContent to have content, received empty string');
+  }
   return getCleanDocument(parseHTML(clipboardContent.replace(/(\r\n|\n|\r)/, ''))).outerHTML;
 };
