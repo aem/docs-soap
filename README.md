@@ -5,10 +5,11 @@ This project was developed for use in a client-side project. To use in a Node en
 
 ### Exported API
 ```js
+export default docsSoap(html: string) -> string;
 export {
   docsSoap(html: string) -> string,
   parseHTML(html: string) -> HTMLElement
-}
+};
 ```
 
 ### Testing

@@ -1,7 +1,7 @@
 'use es6';
 
 import documents from './fixtures/documents';
-import docsSoap from '../src/index';
+import docsSoap from '../dist/index';
 import expect from 'expect';
 import jsdom from 'mocha-jsdom';
 import parseHTML from '../src/parseHTML';
@@ -13,9 +13,11 @@ describe('Google Docs Converter', () => {
     const rawContents = parseHTML(documents.inlineStyles);
     expect(rawContents.querySelectorAll('strong').length).toBe(0);
     expect(rawContents.querySelectorAll('i').length).toBe(0);
+    expect(rawContents.querySelectorAll('u').length).toBe(0);
     const doc = parseHTML(docsSoap(documents.inlineStyles));
     expect(doc.querySelectorAll('strong').length).toBe(1);
     expect(doc.querySelectorAll('i').length).toBe(1);
+    expect(doc.querySelectorAll('u').length).toBe(1);
   });
 
   it('converts links from google docs properly', () => {

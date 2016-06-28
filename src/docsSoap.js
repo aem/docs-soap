@@ -1,7 +1,16 @@
 const parseHTML = require('./parseHTML');
 
-const DOCS_BOLD_WEIGHT = '700';
-const ITALIC_STYLE = 'italic';
+const styles = {
+  BOLD: '700',
+  ITALIC: 'italic',
+  UNDERLINE: 'underline'
+};
+
+const elements = {
+  BOLD: 'strong',
+  ITALIC: 'i',
+  UNDERLINE: 'u'
+};
 
 const wrapNodeAnchor = (node, href) => {
   const anchor = document.createElement('a');
@@ -10,16 +19,10 @@ const wrapNodeAnchor = (node, href) => {
   return anchor;
 };
 
-const wrapNodeItalic = node => {
-  const italic = document.createElement('i');
-  italic.appendChild(node.cloneNode(true));
-  return italic;
-};
-
-const wrapNodeStrong = node => {
-  const strong = document.createElement('strong');
-  strong.appendChild(node.cloneNode(true));
-  return strong;
+const wrapNodeInline = (node, style) => {
+  const el = document.createElement(style);
+  el.appendChild(node.cloneNode(true));
+  return el;
 };
 
 const applyBlockStyles = dirty => {
@@ -28,18 +31,24 @@ const applyBlockStyles = dirty => {
   if (node.childNodes[0] && node.childNodes[0].nodeName === 'A') {
     newNode = wrapNodeAnchor(newNode.cloneNode(true), node.childNodes[0].href);
     const inner = node.childNodes[0].childNodes[0];
-    if (inner && inner.style && inner.style.fontWeight === DOCS_BOLD_WEIGHT) {
-      newNode = wrapNodeStrong(newNode);
+    if (inner && inner.style && inner.style.fontWeight === styles.BOLD) {
+      newNode = wrapNodeInline(newNode, elements.BOLD);
     }
-    if (inner && inner.style && inner.style.fontStyle === ITALIC_STYLE) {
-      newNode = wrapNodeItalic(newNode);
+    if (inner && inner.style && inner.style.fontStyle === styles.ITALIC) {
+      newNode = wrapNodeInline(newNode, elements.ITALIC);
+    }
+    if (inner && inner.style && inner.style.textDecoration === styles.UNDERLINE) {
+      newNode = wrapNodeInline(newNode, elements.UNDERLINE);
     }
   }
-  if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontWeight === DOCS_BOLD_WEIGHT) {
-    newNode = wrapNodeStrong(newNode);
+  if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontWeight === styles.BOLD) {
+    newNode = wrapNodeInline(newNode, elements.BOLD);
   }
-  if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontStyle === ITALIC_STYLE) {
-    newNode = wrapNodeItalic(newNode);
+  if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontStyle === styles.ITALIC) {
+    newNode = wrapNodeInline(newNode, elements.ITALIC);
+  }
+  if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.textDecoration === styles.UNDERLINE) {
+    newNode = wrapNodeInline(newNode, elements.UNDERLINE);
   }
   return newNode;
 };
@@ -49,18 +58,24 @@ const applyInlineStyles = dirty => {
   let newNode = document.createTextNode(node.textContent);
   if (node.nodeName === 'A') {
     newNode = wrapNodeAnchor(newNode, node.href);
-    if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontWeight === DOCS_BOLD_WEIGHT) {
-      newNode = wrapNodeStrong(newNode);
+    if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontWeight === styles.BOLD) {
+      newNode = wrapNodeInline(newNode, elements.BOLD);
     }
-    if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontStyle === ITALIC_STYLE) {
-      newNode = wrapNodeItalic(newNode);
+    if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontStyle === styles.ITALIC) {
+      newNode = wrapNodeInline(newNode, elements.ITALIC);
+    }
+    if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.textDecoration === styles.UNDERLINE) {
+      newNode = wrapNodeInline(newNode, elements.UNDERLINE);
     }
   }
-  if (node.style && node.style.fontWeight === DOCS_BOLD_WEIGHT) {
-    newNode = wrapNodeStrong(newNode);
+  if (node.style && node.style.fontWeight === styles.BOLD) {
+    newNode = wrapNodeInline(newNode, elements.BOLD);
   }
-  if (node.style && node.style.fontStyle === ITALIC_STYLE) {
-    newNode = wrapNodeItalic(newNode);
+  if (node.style && node.style.fontStyle === styles.ITALIC) {
+    newNode = wrapNodeInline(newNode, elements.ITALIC);
+  }
+  if (node.style && node.style.textDecoration === styles.UNDERLINE) {
+    newNode = wrapNodeInline(newNode, elements.UNDERLINE);
   }
   return newNode;
 };
