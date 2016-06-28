@@ -1,19 +1,8 @@
-const parseHTML = require('./parseHTML');
-
-const styles = {
-  BOLD: '700',
-  ITALIC: 'italic',
-  UNDERLINE: 'underline'
-};
-
-const elements = {
-  BOLD: 'strong',
-  ITALIC: 'i',
-  UNDERLINE: 'u'
-};
+import { elements, styles } from './constants';
+import parseHTML from './parseHTML';
 
 const wrapNodeAnchor = (node, href) => {
-  const anchor = document.createElement('a');
+  const anchor = document.createElement(elements.ANCHOR);
   anchor.href = href;
   anchor.appendChild(node.cloneNode(true));
   return anchor;
@@ -40,6 +29,15 @@ const applyBlockStyles = dirty => {
     if (inner && inner.style && inner.style.textDecoration === styles.UNDERLINE) {
       newNode = wrapNodeInline(newNode, elements.UNDERLINE);
     }
+    if (inner && inner.style && inner.style.textDecoration === styles.STRIKETHROUGH) {
+      newNode = wrapNodeInline(newNode, elements.STRIKETHROUGH);
+    }
+    if (inner && inner.style && inner.style.verticalAlign === styles.SUPERSCRIPT) {
+      newNode = wrapNodeInline(newNode, elements.SUPERSCRIPT);
+    }
+    if (inner && inner.style && inner.style.verticalAlign === styles.SUBSCRIPT) {
+      newNode = wrapNodeInline(newNode, elements.SUBSCRIPT);
+    }
   }
   if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.fontWeight === styles.BOLD) {
     newNode = wrapNodeInline(newNode, elements.BOLD);
@@ -49,6 +47,15 @@ const applyBlockStyles = dirty => {
   }
   if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.textDecoration === styles.UNDERLINE) {
     newNode = wrapNodeInline(newNode, elements.UNDERLINE);
+  }
+  if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.textDecoration === styles.STRIKETHROUGH) {
+    newNode = wrapNodeInline(newNode, elements.STRIKETHROUGH);
+  }
+  if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.verticalAlign === styles.SUPERSCRIPT) {
+    newNode = wrapNodeInline(newNode, elements.SUPERSCRIPT);
+  }
+  if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.verticalAlign === styles.SUBSCRIPT) {
+    newNode = wrapNodeInline(newNode, elements.SUBSCRIPT);
   }
   return newNode;
 };
@@ -67,6 +74,15 @@ const applyInlineStyles = dirty => {
     if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.textDecoration === styles.UNDERLINE) {
       newNode = wrapNodeInline(newNode, elements.UNDERLINE);
     }
+    if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.textDecoration === styles.STRIKETHROUGH) {
+      newNode = wrapNodeInline(newNode, elements.STRIKETHROUGH);
+    }
+    if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.verticalAlign === styles.SUPERSCRIPT) {
+      newNode = wrapNodeInline(newNode, elements.SUPERSCRIPT);
+    }
+    if (node.childNodes[0] && node.childNodes[0].style && node.childNodes[0].style.verticalAlign === styles.SUBSCRIPT) {
+      newNode = wrapNodeInline(newNode, elements.SUBSCRIPT);
+    }
   }
   if (node.style && node.style.fontWeight === styles.BOLD) {
     newNode = wrapNodeInline(newNode, elements.BOLD);
@@ -76,6 +92,15 @@ const applyInlineStyles = dirty => {
   }
   if (node.style && node.style.textDecoration === styles.UNDERLINE) {
     newNode = wrapNodeInline(newNode, elements.UNDERLINE);
+  }
+  if (node.style && node.style.textDecoration === styles.STRIKETHROUGH) {
+    newNode = wrapNodeInline(newNode, elements.STRIKETHROUGH);
+  }
+  if (node.style && node.style.verticalAlign === styles.SUPERSCRIPT) {
+    newNode = wrapNodeInline(newNode, elements.SUPERSCRIPT);
+  }
+  if (node.style && node.style.verticalAlign === styles.SUBSCRIPT) {
+    newNode = wrapNodeInline(newNode, elements.SUBSCRIPT);
   }
   return newNode;
 };
