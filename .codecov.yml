@@ -27,12 +27,10 @@ coverage:
         branches: null
 
   ignore:
-    - test/.*
+    - test/*
     - .github/*
 
 comment:
   layout: "header, diff, changes, uncovered"
-  branches: "*"
+  branches: null
   behavior: default
-  paths:
-    - src/.*
