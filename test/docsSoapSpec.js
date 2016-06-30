@@ -2,7 +2,7 @@
 
 import { elements } from '../src/constants'
 import documents from './fixtures/documents';
-import docsSoap from '../dist/index';
+import docsSoap from '../src/index';
 import expect from 'expect';
 import jsdom from 'mocha-jsdom';
 import parseHTML from '../src/parseHTML';
