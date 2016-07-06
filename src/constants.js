@@ -1,3 +1,5 @@
+export const docsId = /id="docs\-internal\-guid/;
+
 export const styles = {
   BOLD: '700',
   ITALIC: 'italic',

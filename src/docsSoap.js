@@ -1,4 +1,4 @@
-import { elements, styles } from './constants';
+import { docsId, elements, styles } from './constants';
 import parseHTML from './parseHTML';
 
 const wrapNodeAnchor = (node, href) => {
@@ -129,6 +129,9 @@ module.exports = (clipboardContent) => {
   }
   if (clipboardContent.length <= 0) {
     throw new Error('Expected clipboardContent to have content, received empty string');
+  }
+  if (!clipboardContent.match(docsId)) {
+    return parseHTML(clipboardContent.replace(/(\r\n|\n|\r)/, '')).outerHTML;
   }
   return getCleanDocument(parseHTML(clipboardContent.replace(/(\r\n|\n|\r)/, ''))).outerHTML;
 };
