@@ -1,3 +1,5 @@
+// @flow
+
 const docsSoap = require('./docsSoap');
 const parseHTML = require('./parseHTML');
 

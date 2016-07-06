@@ -1,4 +1,8 @@
-module.exports = function parseHTML(html) {
+// @flow
+
+module.exports = (
+  html: string
+): HTMLElement => {
   let doc = void 0;
   if (typeof DOMParser !== 'undefined') {
     const parser = new DOMParser();
