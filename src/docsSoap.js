@@ -1,20 +1,31 @@
+// @flow
+
 import { docsId, elements, styles } from './constants';
 import parseHTML from './parseHTML';
 
-const wrapNodeAnchor = (node, href) => {
+const wrapNodeAnchor = (
+  node: Node,
+  href: string
+): HTMLAnchorElement => {
   const anchor = document.createElement(elements.ANCHOR);
   anchor.href = href;
   anchor.appendChild(node.cloneNode(true));
   return anchor;
 };
 
-const wrapNodeInline = (node, style) => {
+const wrapNodeInline = (
+  node: Node,
+  style: string
+): Node => {
   const el = document.createElement(style);
   el.appendChild(node.cloneNode(true));
   return el;
 };
 
-const wrapNode = (inner, result) => {
+const wrapNode = (
+  inner: Node,
+  result: Node
+): Node => {
   let newNode = result.cloneNode(true);
   if (inner.style && inner.style.fontWeight === styles.BOLD) {
     newNode = wrapNodeInline(newNode, elements.BOLD);
@@ -37,14 +48,17 @@ const wrapNode = (inner, result) => {
   return newNode;
 };
 
-const applyBlockStyles = dirty => {
+const applyBlockStyles = (
+  dirty: Node
+): Node => {
   const node = dirty.cloneNode(true);
   let newNode = document.createTextNode(node.textContent);
-  let styledNode = null;
+  let styledNode = document.createTextNode('');
   if (node.childNodes[0] && node.childNodes[0].style) {
     styledNode = node.childNodes[0];
   }
   if (node.childNodes[0] && node.childNodes[0].nodeName === 'A') {
+    // flow-ignore Flow doesn't recognize that a childNode can be an HTMLAnchorElement
     newNode = wrapNodeAnchor(newNode.cloneNode(true), node.childNodes[0].href);
     styledNode = node.childNodes[0].childNodes[0];
   }
@@ -52,11 +66,14 @@ const applyBlockStyles = dirty => {
   return newNode;
 };
 
-const applyInlineStyles = dirty => {
+const applyInlineStyles = (
+  dirty: Node
+): Node => {
   const node = dirty.cloneNode(true);
   let newNode = document.createTextNode(node.textContent);
   let styledNode = node;
   if (node.nodeName === 'A') {
+    // flow-ignore Flow doesn't recognize that cloneNode() can return an HTMLAnchorElement
     newNode = wrapNodeAnchor(newNode, node.href);
     if (node.childNodes[0] && node.childNodes[0].style) {
       styledNode = node.childNodes[0];
@@ -66,7 +83,9 @@ const applyInlineStyles = dirty => {
   return newNode;
 };
 
-const getCleanNode = (node) => {
+const getCleanNode = (
+  node: Node
+): Array<Node> => {
   if (node.childNodes && node.childNodes.length <= 1) {
     let newWrapper = null;
     let newNode = document.createTextNode(node.textContent);
@@ -94,7 +113,7 @@ const getCleanNode = (node) => {
     }
     return nodes;
   }
-  return node;
+  return [node];
 };
 
 /**
@@ -103,7 +122,9 @@ const getCleanNode = (node) => {
  * @param dirty
  * @returns {HTMLElement}
  */
-const getCleanDocument = (dirty) => {
+const getCleanDocument = (
+  dirty: HTMLElement
+): HTMLElement => {
   // create a new document to preserve the integrity of the original data
   const body = document.createElement('body');
   const nodes = dirty.childNodes;
@@ -123,7 +144,9 @@ const getCleanDocument = (dirty) => {
   return body;
 };
 
-module.exports = (clipboardContent) => {
+module.exports = (
+  clipboardContent: string
+): string => {
   if (typeof clipboardContent !== 'string') {
     throw new Error(`Expected 'clipboardContent' to be a string of HTML, received ${typeof clipboardContent}`);
   }
