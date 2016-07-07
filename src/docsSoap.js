@@ -27,6 +27,9 @@ const wrapNode = (
   result: Node
 ): Node => {
   let newNode = result.cloneNode(true);
+  if (!inner) {
+    return newNode;
+  }
   if (inner.style && inner.style.fontWeight === styles.BOLD) {
     newNode = wrapNodeInline(newNode, elements.BOLD);
   }
@@ -86,13 +89,17 @@ const applyInlineStyles = (
 const getCleanNode = (
   node: Node
 ): Array<Node> => {
-  if (node.childNodes && node.childNodes.length <= 1) {
+  if (node.childNodes && (node.childNodes.length <= 1 || node.nodeName === 'OL' || node.nodeName === 'UL')) {
     let newWrapper = null;
     let newNode = document.createTextNode(node.textContent);
-    if (node.nodeName === 'LI' || node.nodeName === 'UL') {
-      // TODO: Handle nested bullets
-      newWrapper = document.createElement('li');
-      newNode = applyBlockStyles(node.childNodes[0].childNodes[0]);
+    if (node.nodeName === 'UL' || node.nodeName === 'OL' || node.nodeName === 'LI') {
+      newWrapper = document.createElement(node.nodeName);
+      newNode = document.createDocumentFragment();
+      const items = [];
+      for (let i = 0; i < node.childNodes.length; i++) {
+        items.push(...getCleanNode(node.childNodes[i]));
+      }
+      items.map(i => newNode.appendChild(i));
     } else if (node.nodeName === 'P') {
       newWrapper = document.createElement('p');
       newNode = applyBlockStyles(node);
