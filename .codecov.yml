@@ -19,8 +19,7 @@ coverage:
 
     patch:
       default:
-        target: auto
-        branches: null
+        enabled: false
 
     changes:
       default:

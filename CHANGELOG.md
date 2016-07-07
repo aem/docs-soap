@@ -2,6 +2,18 @@
 <table>
   <tr>
     <td>
+      <strong>v0.1.4</strong>
+    </td>
+    <td>
+      <ul>
+        <li>Added support for ordered lists</li>
+        <li>Added support for nested lists</li>
+      </ul>
+      Thanks to <a href="https://github.com/LeZuse">@LeZuse</a> for his help on this!
+    </td>
+  </tr>
+  <tr>
+    <td>
       <strong>v0.1.3</strong>
     </td>
     <td>
