@@ -1,6 +1,6 @@
 // @flow
 
-import { docsId, elements, styles } from './constants';
+import { docsId, elements, headers, styles } from './constants';
 import parseHTML from './parseHTML';
 
 const wrapNodeAnchor = (
@@ -99,7 +99,10 @@ const getCleanNode = (
       for (let i = 0; i < node.childNodes.length; i++) {
         items.push(...getCleanNode(node.childNodes[i]));
       }
-      items.map(i => newNode.appendChild(i));
+      items.map((i: Node): Node => newNode.appendChild(i));
+    } else if (headers.indexOf(node.nodeName) !== -1) {
+      newWrapper = document.createElement(node.nodeName);
+      newNode = applyInlineStyles(node.childNodes[0]);
     } else if (node.nodeName === 'P') {
       newWrapper = document.createElement('p');
       newNode = applyBlockStyles(node);
