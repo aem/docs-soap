@@ -2,6 +2,16 @@
 <table>
   <tr>
     <td>
+      <strong>v0.1.5</strong>
+    </td>
+    <td>
+      <ul>
+        <li>Added support for all header types</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <strong>v0.1.4</strong>
     </td>
     <td>

@@ -98,4 +98,12 @@ describe('Google Docs Converter', () => {
     expect(doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelectorAll(elements.UNDERLINE).length).toBe(1);
     expect(doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelector(elements.UNDERLINE).textContent).toBe('underline');
   });
+
+  it('converts header types properly', () => {
+    const doc = parseHTML(docsSoap(documents.headers));
+    expect(doc.querySelectorAll('h1').length).toBe(1);
+    expect(doc.querySelectorAll('h2').length).toBe(1);
+    expect(doc.querySelectorAll('h3').length).toBe(1);
+    expect(doc.querySelectorAll('h4').length).toBe(1);
+  });
 });

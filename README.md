@@ -4,10 +4,9 @@ docs-soap is a small, simple library that can be used to transform clipboard con
 
 This project was developed for use in a client-side project. To use in a Node environment, your project will also require [jsdom](https://www.npmjs.com/package/jsdom). 
 
-### New in 0.1.4
+### New in 0.1.5
 <ul>
-  <li>Added support for ordered lists</li>
-  <li>Added support for nested lists</li>
+  <li>Added support for all header types</li>
 </ul>
 
 ### Exported API
