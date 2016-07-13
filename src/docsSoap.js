@@ -154,7 +154,7 @@ const getCleanDocument = (
   return body;
 };
 
-module.exports = (
+export default (
   clipboardContent: string
 ): string => {
   if (typeof clipboardContent !== 'string') {

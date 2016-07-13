@@ -1,7 +1,7 @@
 // @flow
 
-const docsSoap = require('./docsSoap');
-const parseHTML = require('./parseHTML');
+import docsSoap from './docsSoap';
+import parseHTML from './parseHTML';
 
 export default docsSoap;
 

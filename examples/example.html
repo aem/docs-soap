@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>docs-soap</title>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+  <script src="../dist/index.js"></script>
+  <script type="text/babel">
+    'use strict';
+    const { docsSoap } = window.docsSoap;
+
+    $('#convert').click(() => {
+      const clean = docsSoap($('#input').val());
+      $('#results').html(clean);
+      $('#results-unformatted').text(clean);
+    });
+  </script>
+  <textarea id="input" cols="80" rows="24"></textarea>
+  <button id="convert">Convert</button>
+  <div id="results"></div>
+  <pre id="results-unformatted" style="background-color:black;color:greenyellow;width:600px;white-space:pre-wrap;"></pre>
+</body>
+</html>

@@ -1,6 +1,6 @@
 // @flow
 
-module.exports = (
+export default (
   html: string
 ): HTMLElement => {
   let doc = void 0;
