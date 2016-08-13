@@ -106,4 +106,9 @@ describe('Google Docs Converter', () => {
     expect(doc.querySelectorAll('h3').length).toBe(1);
     expect(doc.querySelectorAll('h4').length).toBe(1);
   });
+
+  it('converts brs properly', () => {
+    const doc = parseHTML(docsSoap(documents.brs));
+    expect(doc.querySelectorAll('br').length).toBe(2);
+  });
 });
