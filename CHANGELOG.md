@@ -2,6 +2,16 @@
 <table>
   <tr>
     <td>
+      <strong>v0.1.6</strong>
+    </td>
+    <td>
+      <ul>
+        <li>Fixed bug where <code>&lt;br&gt;</code> tags would be stripped</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <strong>v0.1.5</strong>
     </td>
     <td>
