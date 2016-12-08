@@ -2,6 +2,16 @@
 <table>
   <tr>
     <td>
+      <strong>v1.0.0</strong>
+    </td>
+    <td>
+      <ul>
+        <li>Project is now stable. Moved to ISC license. Primary reason for bumping major is to get back on semver, I messed up semver pretty badly to this point.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <strong>v0.1.6</strong>
     </td>
     <td>

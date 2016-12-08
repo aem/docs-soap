@@ -4,9 +4,9 @@ docs-soap is a small, simple library that can be used to transform clipboard con
 
 This project was developed for use in a client-side project. To use in a Node environment, your project will also require [jsdom-global](https://www.npmjs.com/package/jsdom-global). 
 
-### New in 0.1.6
+### New in 1.0.0
 
-* Fixed bug where `<br>` tags would be stripped from output
+* Project is now stable. Moved to ISC license. Primary reason for bumping major is to get back on semver, I messed up semver pretty badly to this point.
 
 ### Exported API
 ```js

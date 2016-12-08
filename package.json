@@ -1,6 +1,6 @@
 {
   "name": "docs-soap",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "A utility for cleaning Google Docs clipboard content into valid HTML",
   "author": "aem <amarkon895@gmail.com>",
   "keywords": [
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://www.github.com/aem/docs-soap/issues"
   },
-  "license": "MIT",
+  "license": "ISC",
   "main": "./dist/index.js",
   "scripts": {
     "codecov": "istanbul cover ./node_modules/.bin/_mocha -- test --recursive --compilers js:babel-register && codecov",
