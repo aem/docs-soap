@@ -1,7 +1,8 @@
 // @flow
+const constants = require('./constants');
+const parseHTML = require('./parseHTML');
 
-import { docsId, elements, headers, styles } from './constants';
-import parseHTML from './parseHTML';
+const { docsId, elements, headers, styles } = constants;
 
 const wrapNodeAnchor = (
   node: Node,
@@ -156,7 +157,7 @@ const getCleanDocument = (
   return body;
 };
 
-export default (
+module.exports = (
   clipboardContent: string
 ): string => {
   if (typeof clipboardContent !== 'string') {

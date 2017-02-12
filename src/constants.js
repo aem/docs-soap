@@ -1,6 +1,6 @@
-export const docsId = /id="docs\-internal\-guid/;
+const docsId = /id="docs\-internal\-guid/;
 
-export const styles = {
+const styles = {
   BOLD: '700',
   ITALIC: 'italic',
   UNDERLINE: 'underline',
@@ -9,7 +9,7 @@ export const styles = {
   SUBSCRIPT: 'sub'
 };
 
-export const elements = {
+const elements = {
   ANCHOR: 'a',
   BOLD: 'strong',
   ITALIC: 'em',
@@ -19,7 +19,7 @@ export const elements = {
   SUBSCRIPT: 'sub'
 };
 
-export const headers = [
+const headers = [
   'H1',
   'H2',
   'H3',
@@ -27,3 +27,5 @@ export const headers = [
   'H5',
   'H6'
 ];
+
+module.exports = { docsId, styles, elements, headers };

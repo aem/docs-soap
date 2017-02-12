@@ -1,11 +1,8 @@
-'use es6';
-
-import { elements } from '../src/constants';
-import documents from './fixtures/documents';
-import docsSoap from '../src/index';
-import expect from 'expect';
-import jsdom from 'mocha-jsdom';
-import parseHTML from '../src/parseHTML';
+const elements = require('../src/constants').elements;
+const { docsSoap, parseHTML } = require('../index');
+const documents = require('./fixtures/documents');
+const expect = require('expect');
+const jsdom = require('mocha-jsdom');
 
 describe('Google Docs Converter', () => {
   jsdom();

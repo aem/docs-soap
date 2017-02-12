@@ -1,6 +1,6 @@
 {
   "name": "docs-soap",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A utility for cleaning Google Docs clipboard content into valid HTML",
   "author": "aem <amarkon895@gmail.com>",
   "keywords": [
@@ -17,21 +17,24 @@
     "url": "https://www.github.com/aem/docs-soap/issues"
   },
   "license": "ISC",
-  "main": "./dist/index.js",
+  "main": "index.js",
   "scripts": {
     "codecov": "istanbul cover ./node_modules/.bin/_mocha -- test --recursive --compilers js:babel-register && codecov",
     "test": "mocha --compilers js:babel-register test",
     "lint": "eslint --ext '.js' ./src",
-    "flow": "flow"
+    "flow": "flow",
+    "build-dev": "webpack --config webpack.config.dev.js",
+    "build-prod": "webpack --config webpack.config.prod.js",
+    "build": "npm-run-all build-dev build-prod"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
+    "babel-core": "^6.22.1",
     "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.10",
     "babel-plugin-transform-flow-strip-types": "^6.8.0",
     "babel-preset-es2015": "^6.6.0",
     "babel-register": "^6.9.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.0.1",
     "codecov": "^1.0.1",
     "eslint": "^2.11.1",
     "eslint-config-airbnb-base": "^3.0.1",
@@ -39,15 +42,11 @@
     "eslint-plugin-import": "^1.8.1",
     "expect": "^1.20.1",
     "flow-bin": "^0.28.0",
-    "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-streamify": "^1.0.2",
-    "gulp-uglify": "^1.5.4",
-    "gulp-util": "^3.0.7",
     "istanbul": "1.0.0-alpha.2",
     "jsdom": "^9.2.1",
     "mocha": "^2.4.5",
     "mocha-jsdom": "^1.1.0",
-    "vinyl-source-stream": "^1.1.0"
+    "npm-run-all": "^4.0.1",
+    "webpack": "^2.2.1"
   }
 }
