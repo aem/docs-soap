@@ -4,12 +4,9 @@ docs-soap is a small (1.5kb minified/gzipped), simple library that can be used t
 
 This project was developed for use in a client-side project. To use in a Node environment, your project will also require [jsdom-global](https://www.npmjs.com/package/jsdom-global).
 
-### New in 1.1.0
+### New in 1.1.1
 
-* Moving to a webpack build instead of gulp/browserify, resolving webpack's warning about using minified files (#24)
-* Moving to CommonJS modules based on my new revelation that the webpack/Babel ESModule implementation is technically incorrect. The side-effect of this is this library no longer supports mixed exports. As such, if you are using `docs-soap` in a CommonJS environment you'll need to switch to importing the library via `require('docs-soap').default`.
-* We now suppport non-bundled builds! See the second below on using the package via a CDN. Obviously I recommend a module-bundling system, but I want to support as many people as possible.
-* Got rid of the changelog. Just take a look at the release tags if you want a history :)
+* The library now refers to a new `lib` directory that contains the sources after flow types have been stripped so consumers who have incompatible build processes can still use the source.
 
 ### Exported API
 ```js
