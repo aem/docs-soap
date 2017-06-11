@@ -1,8 +1,10 @@
 const elements = require('../src/constants').elements;
-const { docsSoap, parseHTML } = require('../index');
+const lib = require('../index');
 const documents = require('./fixtures/documents');
 const expect = require('expect');
 const jsdom = require('mocha-jsdom');
+
+const { parseHTML, docsSoap } = lib;
 
 describe('Google Docs Converter', () => {
   jsdom();
@@ -69,8 +71,12 @@ describe('Google Docs Converter', () => {
     expect(doc.childNodes[0].childNodes[1].childNodes.length).toBe(2);
     expect(doc.childNodes[0].childNodes[1].childNodes[0].nodeName).toBe('LI');
     expect(doc.childNodes[0].childNodes[1].childNodes[1].nodeName).toBe('OL');
-    expect(doc.childNodes[0].childNodes[1].childNodes[1].childNodes.length).toBe(1);
-    expect(doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].nodeName).toBe('LI');
+    expect(
+      doc.childNodes[0].childNodes[1].childNodes[1].childNodes.length
+    ).toBe(1);
+    expect(
+      doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].nodeName
+    ).toBe('LI');
     expect(doc.childNodes[0].childNodes[2].nodeName).toBe('LI');
     expect(doc.childNodes[0].childNodes[2].childNodes.length).toBe(1);
     expect(doc.childNodes[0].childNodes[3].nodeName).toBe('OL');
@@ -82,18 +88,44 @@ describe('Google Docs Converter', () => {
     expect(doc.childNodes[1].childNodes[2].nodeName).toBe('UL');
     expect(doc.childNodes[1].childNodes[2].childNodes[0].nodeName).toBe('LI');
     expect(doc.childNodes[1].childNodes[2].childNodes[1].nodeName).toBe('UL');
-    expect(doc.childNodes[1].childNodes[2].childNodes[1].childNodes[0].nodeName).toBe('LI');
-    expect(doc.childNodes[1].childNodes[2].childNodes[1].childNodes[0].childNodes.length).toBe(1);
+    expect(
+      doc.childNodes[1].childNodes[2].childNodes[1].childNodes[0].nodeName
+    ).toBe('LI');
+    expect(
+      doc.childNodes[1].childNodes[2].childNodes[1].childNodes[0].childNodes
+        .length
+    ).toBe(1);
   });
 
   it('converts deep nested styles from gdocs properly', () => {
     const doc = parseHTML(docsSoap(documents.nestedList));
-    expect(doc.childNodes[0].childNodes[0].querySelectorAll(elements.BOLD).length).toBe(3);
-    expect(doc.childNodes[0].childNodes[0].querySelectorAll(elements.UNDERLINE).length).toBe(3);
-    expect(doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelectorAll(elements.ITALIC).length).toBe(1);
-    expect(doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelector(elements.ITALIC).textContent).toBe('italics');
-    expect(doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelectorAll(elements.UNDERLINE).length).toBe(1);
-    expect(doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelector(elements.UNDERLINE).textContent).toBe('underline');
+    expect(
+      doc.childNodes[0].childNodes[0].querySelectorAll(elements.BOLD).length
+    ).toBe(3);
+    expect(
+      doc.childNodes[0].childNodes[0].querySelectorAll(elements.UNDERLINE)
+        .length
+    ).toBe(3);
+    expect(
+      doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelectorAll(
+        elements.ITALIC
+      ).length
+    ).toBe(1);
+    expect(
+      doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelector(
+        elements.ITALIC
+      ).textContent
+    ).toBe('italics');
+    expect(
+      doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelectorAll(
+        elements.UNDERLINE
+      ).length
+    ).toBe(1);
+    expect(
+      doc.childNodes[0].childNodes[1].childNodes[1].childNodes[0].querySelector(
+        elements.UNDERLINE
+      ).textContent
+    ).toBe('underline');
   });
 
   it('converts header types properly', () => {

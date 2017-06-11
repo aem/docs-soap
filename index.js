@@ -1,7 +1,7 @@
 // @flow
 
-const docsSoap = require('./src/docsSoap');
-const parseHTML = require('./src/parseHTML');
+const docsSoap = require('./lib/docsSoap');
+const parseHTML = require('./lib/parseHTML');
 
 module.exports = {
   default: docsSoap,
