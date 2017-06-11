@@ -1,5 +1,7 @@
 # docs-soap [![Build Status](https://travis-ci.org/aem/docs-soap.svg?branch=master)](https://travis-ci.org/aem/docs-soap) [![npm version](https://badge.fury.io/js/docs-soap.svg)](https://badge.fury.io/js/docs-soap) [![codecov](https://codecov.io/gh/aem/docs-soap/branch/master/graph/badge.svg)](https://codecov.io/gh/aem/docs-soap)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/aem/docs-soap.svg)](https://greenkeeper.io/)
+
 docs-soap is a small (1.5kb minified/gzipped), simple library that can be used to transform clipboard contents from Google Docs into readable HTML. This library was born from the need to parse clipboard content from Google Docs into a [DraftJS](https://www.github.com/facebook/draft-js) Rich Text Editor and fits nicely into Draft's `handlePastedText` hook.
 
 This project was developed for use in a client-side project. To use in a Node environment, your project will also require [jsdom-global](https://www.npmjs.com/package/jsdom-global).
