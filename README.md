@@ -4,9 +4,9 @@ docs-soap is a small (1.5kb minified/gzipped), simple library that can be used t
 
 This project was developed for use in a client-side project. To use in a Node environment, your project will also require [jsdom-global](https://www.npmjs.com/package/jsdom-global).
 
-### New in 1.1.1
+### New in 1.2.0
 
-* The library now refers to a new `lib` directory that contains the sources after flow types have been stripped so consumers who have incompatible build processes can still use the source.
+* The library is now ES5 compatible for use with create-react-app. This is a minor release to avoid breaking anyone's code who depends on the ES6 functionality.
 
 ### Exported API
 ```js
