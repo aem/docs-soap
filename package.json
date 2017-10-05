@@ -23,7 +23,7 @@
     "test": "mocha --compilers js:babel-register test",
     "lint": "eslint --ext '.js' ./src",
     "flow": "flow",
-    "build-lib": "babel src --out-dir lib --plugins=transform-flow-strip-types",
+    "build-lib": "babel src --out-dir lib --plugins=transform-flow-strip-types --presets=es2015",
     "build-dev": "webpack --config webpack.config.dev.js",
     "build-prod": "webpack --config webpack.config.prod.js",
     "build": "npm-run-all build-lib build-dev build-prod"
