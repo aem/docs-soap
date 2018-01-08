@@ -41,15 +41,15 @@ const docsSoap = require('docs-soap').default;
 
 #### Script tag
 ```html
-<script src="https://unpkg.com/docs-soap@1.1.0/dist/docs-soap.min.js"></script>
+<script src="https://unpkg.com/docs-soap@1.2.0/dist/docs-soap.min.js"></script>
 ```
 ```js
-var docsSoap = window.docsSoap.default;
+var docsSoap = window.docsSoap;
 ```
 
 ### Usage
 ```js
-const html = '<body><b><span style="font-weight:700">bold text</span><span style="font-style:italic">some italic text</span></b></body>';
+const html = '<body id="docs-internal-guid-1234"><b><span style="font-weight:700">bold text</span><span style="font-style:italic">some italic text</span></b></body>';
 const clean = docsSoap(html);
 console.log(clean); /* "<body><strong>some bold text</strong><i>some italic text</i></body>" */
 ```
