@@ -140,4 +140,9 @@ describe('Google Docs Converter', () => {
     const doc = parseHTML(docsSoap(documents.brs));
     expect(doc.querySelectorAll('br').length).toBe(2);
   });
+
+  it('ignores comments', () => {
+    const doc = parseHTML(docsSoap(documents.endFragment));
+    expect(doc.textContent).toBe('Only text')
+  })
 });

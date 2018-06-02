@@ -130,6 +130,15 @@ const getCleanNode = (
 };
 
 /**
+ * filter unwanted node
+ * @param node
+ * @returns {boolean}
+ */
+const filterNode = (
+  node: Node
+): boolean => node.nodeType !== 8; // Node.COMMENT_NODE = 8
+
+/**
  * parses the given "dirty" clipboard content and returns a (mostly) clean
  * HTML document with only the HTML content you want
  * @param dirty
@@ -141,11 +150,12 @@ const getCleanDocument = (
   // create a new document to preserve the integrity of the original data
   const body = document.createElement('body');
   const nodes = dirty.childNodes;
+  const filteredNodes = Array.from(nodes).filter(filterNode);
   const cleanNodes = [];
 
   // for each top level node, clean it up recursively
-  for (let i = 0; i < nodes.length; i++) {
-    cleanNodes.push(...getCleanNode(nodes[i]));
+  for (const node of filteredNodes) {
+    cleanNodes.push(...getCleanNode(node));
   }
 
   // append all of the clean nodes to the new document
