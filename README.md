@@ -4,11 +4,12 @@ docs-soap is a small (1.5kb minified/gzipped), simple library that can be used t
 
 This project was developed for use in a client-side project. To use in a Node environment, your project will also require [jsdom-global](https://www.npmjs.com/package/jsdom-global).
 
-### New in 1.2.0
+### New in 1.2.1
 
-* The library is now ES5 compatible for use with create-react-app. This is a minor release to avoid breaking anyone's code who depends on the ES6 functionality.
+* Comment are stripped from output. Fixes bug when pasting on Windows.
 
 ### Exported API
+
 ```js
 module.exports = {
   default: docsSoap,
@@ -18,38 +19,50 @@ module.exports = {
 ```
 
 ### Testing
+
 Tests are written in Mocha, using `expect` for assertions. `npm run test` will run all tests in the `test/` directory, allowing you to test the entire library's functionality at once. All contributions to the repository are expected to contain accompanying tests.
 
 In the `examples/` directory, there's a simple HTML example that, after running `npm run build` in the project root, can be used to test your changes or just see the library in action.
 
 ### Installation
+
 #### ESM
+
 ```bash
 yarn add docs-soap
 ```
+
 ```js
 import docsSoap from 'docs-soap';
 ```
 
 #### CommonJS
+
 ```bash
 yarn add docs-soap
 ```
+
 ```js
 const docsSoap = require('docs-soap').default;
 ```
 
 #### Script tag
+
 ```html
-<script src="https://unpkg.com/docs-soap@1.2.0/dist/docs-soap.min.js"></script>
+<script src="https://unpkg.com/docs-soap@1.2.1/dist/docs-soap.min.js"></script>
 ```
+
 ```js
 var docsSoap = window.docsSoap;
 ```
 
 ### Usage
+
 ```js
-const html = '<body id="docs-internal-guid-1234"><b><span style="font-weight:700">bold text</span><span style="font-style:italic">some italic text</span></b></body>';
+const html =
+  '<body id="docs-internal-guid-1234"><b><span style="font-weight:700">bold text</span><span style="font-style:italic">some italic text</span></b></body>';
 const clean = docsSoap(html);
-console.log(clean); /* "<body><strong>some bold text</strong><i>some italic text</i></body>" */
+console.log(
+  clean
+); /* "<body><strong>some bold text</strong><i>some italic text</i></body>" */
 ```
