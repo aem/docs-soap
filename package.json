@@ -1,6 +1,6 @@
 {
   "name": "docs-soap",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A utility for cleaning Google Docs clipboard content into valid HTML",
   "author": "aem <amarkon895@gmail.com>",
   "keywords": [
